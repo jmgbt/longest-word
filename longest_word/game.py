@@ -13,8 +13,10 @@ class Game:
         if not word:
             return False
 
-        """Return True if and only if the word is valid, given the Game's grid"""
-        for char in word:
-            if char not in self.grid:
+        letters = self.grid.copy() # Consume letters from the grid
+        for letter in word:
+            if letter in letters:
+                letters.remove(letter)
+            else:
                 return False
         return True
