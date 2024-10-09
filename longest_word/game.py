@@ -9,6 +9,10 @@ class Game:
             self.grid.append(random.choice(string.ascii_uppercase))
 
     def is_valid(self, word: str) -> bool:
+        '''Return False if no word'''
+        if not word:
+            return False
+
         """Return True if and only if the word is valid, given the Game's grid"""
         for char in word:
             if char not in self.grid:
