@@ -16,33 +16,33 @@ class TestGame:
             for letter in grid:
                 assert letter in string.ascii_uppercase
 
-def test_no_word_is_invalid(self):
-    # setup
-    new_game = Game()
+    def test_empty_word_is_invalid(self):
+        # setup
+        new_game = Game()
+        # verify
+        assert new_game.is_valid('') is False
 
-    # exercice
 
-    # verify
-    assert new_game.is_valid('') is False
+    def test_is_valid(self):
+        # setup
+        new_game = Game()
+        test_grid = 'KWEUEAKRZ'
+        test_word = 'EUREKA'
+        # exercice
+        new_game.grid = list(test_grid) # Force the grid to a test case
+        # verify
+        assert new_game.is_valid(test_word) is True
+        # teardown
+        assert new_game.grid == list(test_grid) # Make sure the grid remained untouched
 
-def word_is_valid(self):
-    # setup
-    new_game = Game()
-    solution='nine'
-
-    # exercice
-    new_game.grid = ['n', 'i', 'n', 'e', 'c', 'a', 'r', 'a', 'c']
-
-    # verify
-    assert new_game.is_valid(solution) is True
-
-def word_is_invalid(self):
-    # setup
-    new_game = Game()
-    solution='zero'
-
-    # exercice
-    new_game.grid = ['n', 'i', 'n', 'e', 'c', 'a', 'r', 'a', 'c']
-
-    # verify
-    assert new_game.is_valid(solution) is False
+    def test_is_invalid(self):
+        # setup
+        new_game = Game()
+        test_grid = 'KWEUEAKRZ'
+        test_word = 'SANDWICH'
+        # exerice
+        new_game.grid = list(test_grid) # Force the grid to a test case
+        # verify
+        assert new_game.is_valid(test_word) is False
+        # teardown
+        assert new_game.grid == list(test_grid) # Make sure the grid remained untouched
